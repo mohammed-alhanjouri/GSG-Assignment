@@ -34,9 +34,13 @@
 
 // export default App
 
-import Message from "./Message";
+// import Message from "./Message";
+// function App(){
+//   return <div><Message/></div>;
+// }
+import ListGroup from "./Components/ListGroup";
 function App(){
-  return <div><Message/></div>;
+  return <div><ListGroup/></div>;
 }
 
 export default App;
