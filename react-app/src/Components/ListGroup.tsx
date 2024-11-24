@@ -29,7 +29,12 @@ function ListGroup() {
       <ul className="list-group">
         {/* when using map method we should give each item a unique key*/}
         {cities.map((city) => (
-          <li className="list-group-item" key={city}>
+          <li
+            className="list-group-item"
+            key={city}
+            // Event Handler
+            onClick={() => console.log(city)}
+          >
             {city}
           </li>
         ))}
