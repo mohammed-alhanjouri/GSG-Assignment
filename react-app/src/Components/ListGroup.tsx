@@ -13,27 +13,43 @@
 //     </>
 //   );
 // }
+import { useState } from "react";
 
-// render a list of items dynamically
+// Render a list of items dynamically
 function ListGroup() {
   let cities = ["Gaza", "Jerusalem", "Ramallah", "Nablus", "Deir Al Balah"];
   //   cities = []; // cities.length === 0
+
+  //   Hook, is a function that allows us to tap into built-in features in React,
+  //   the following hook called a Stathook, we use it when components can have data or state that will change over time
+  const [selectedIndex, setSelectedIndex] = useState(-1);
+
   return (
-    // use a fragment to wrap all the children
+    // Use a fragment to wrap all the children
     <>
       <h1>List Group</h1>
+
       {/* Conditional Rendering */}
       {cities.length === 0 ? <p>No items found</p> : null}
       {/* More concise way to implement the Conditional Rendering */}
       {cities.length === 0 && <p>No items found</p>}
+
       <ul className="list-group">
-        {/* when using map method we should give each item a unique key*/}
-        {cities.map((city) => (
+        {/* When using map method we should give each item a unique key*/}
+        {cities.map((city, index) => (
           <li
-            className="list-group-item"
+            // Render active class dynamically , Conditional Rendering
+            className={
+              selectedIndex === index
+                ? "list-group-item active"
+                : "list-group-item"
+            }
             key={city}
             // Event Handler
-            onClick={() => console.log(city)}
+            // onClick={() => console.log(city)}
+            onClick={() => {
+              setSelectedIndex(index);
+            }}
           >
             {city}
           </li>
